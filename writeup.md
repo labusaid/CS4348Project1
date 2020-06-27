@@ -1,6 +1,7 @@
 ## How did you approach the project?
-I started off by trying to create the functionality of the project without any of the bus/OS features,
- more like how I would have organized it if I was trying to make this a practical project.
+I started off by trying to create the functionality of the project without any of the bus/OS features
+ and instead using built in python functionality more like how I would have organized it
+ if I was trying to make this a practical project.
 
 ## How did you organize the project? Why?
 I created a separate file for each process, while there's a lot of places that repeated code could have been cut down,
@@ -10,7 +11,9 @@ capture process output to a terminal or learn to use a debugger in order to get 
 
 ## What problems did you encounter?
 Working with the signaling interface in a direct way really led to a lot of confusion as to how different parts
-of the project were interacting with each other.
+of the project were interacting with each other. When I initially read through the project I figured 
+"pipes I know how those work" and didn't realize that it would involve transferring
+each byte individually along with a bunch of other signals.
 
 ## How did you fix them?
 Unfortunately I ran out of time in this case, but I would have considered making a short helper program that
