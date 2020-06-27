@@ -3,7 +3,7 @@
 import sys
 from subprocess import Popen, PIPE
 
-dev = Popen(['python', 'device.py', sys.argv[1]], stdout=PIPE, stdin=PIPE, bufsize=-1)
+dev = Popen(['python', 'transferdevice.py', sys.argv[1]], stdout=PIPE, stdin=PIPE, bufsize=-1)
 
 reset = [0x03,0x01] # Reset Command
 fetch = [0x03,0x00] # Fetch Command
@@ -13,9 +13,11 @@ done = False
 while not done:
     dev.stdin.write(bytes(fetch))
     dev.stdin.flush()
-    reply = bytearray(dev.stdout.read(2))
+    reply = bytearray(dev.stdout.read(2)) # reads
+    # exits if exit signal is given
     if reply[1] == 0x00:
         done = True
+    #
     else:
         sys.stdout.write(bytearray([reply[1]]).decode())
 

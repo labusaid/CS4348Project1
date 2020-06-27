@@ -7,6 +7,6 @@ def access(mode, index, toWrite=None):
         byteBuffer[index] = toWrite
 
 # Test Code
-# access('read', 0)
-# access('write', 0, 7)
-# access('read', 0)
+access('read', 0)
+access('write', 0, 7)
+access('read', 0)

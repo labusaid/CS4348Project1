@@ -1,20 +1,31 @@
+import sys
 import time
 
 inputBuffer = bytearray(1)
 
-inputFile = open('os_in.txt')
-
-controlMode = None
+inputFile = open(sys.argv[1])
 
 while True:
-    # TODO: make program wait for buffer to be cleared
-    controlMode = inputFile.read(1) # read a line in
+    # gets control character
+    controlMode = inputFile.read(1)
+
+    # exits if end of file is reached
+    if controlMode == '':
+        exit()
+
+    # read a line in
     if controlMode == 't':
         print(inputFile.readline())
         # TODO: make this work
-    elif controlMode == 'n': # set buffer to newline
+    # set buffer to newline
+    elif controlMode == 'n':
         print('newline read')
         inputBuffer[0] = 10 # ASCII for \n
-    elif controlMode == 'd': # delay for read int milliseconds
+    # delay for read int milliseconds
+    elif controlMode == 'd':
         print('sleeping')
         time.sleep(int(inputFile.readline())/1000)
+
+    # stalls until buffer is emptied to continue
+    while inputBuffer[0] != 0:
+        time.sleep(.001)
